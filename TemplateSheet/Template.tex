@@ -134,11 +134,11 @@
 
 \newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
 
-\newcommand{\nc}[2][b]{%
+\newcommand{\nc}[2][w]{ %Las lineas superiores de las cajas
 \tikz \draw [draw=#1,thick]
     ($(current page.center)-(0.495\linewidth,0)$) -- 
     ($(current page.center)+(0.495\linewidth,0)$)
-    node [midway, fill=b] {\ssmall\textbf{\uppercase{#2}}};
+    node [midway, fill=w] {\ssmall\textbf{\uppercase{#2}}};
 }
 
 \newtcolorbox{conceptbox}[2][]{
@@ -146,15 +146,15 @@
 	vfill before first=false,
 	segmentation at break=false,
 	size=fbox,
-	colback=b,
+	colback=w, %Color de las "cajas" de información
 	title=\scriptsize\textbf{\MakeUppercase{#2}},
 	left=2pt,
 	right=2pt,
 	top=3pt,
 	bottom=1pt,
 	boxrule=1pt,
-	coltitle=b,
-	colupper=w,
+	coltitle=b, %Color del titulo caja
+	colupper=b, %Color del "upper"
 	pad at break=5pt,
 	toprule at break=4pt,
 	bottomrule at break=0.75pt,
@@ -168,19 +168,22 @@
 
 \begin{document}
 \ssmall
-\pagecolor{b}
+\pagecolor{w}
 \fontfamily{put}
 \begin{minipage}{\textwidth} %title
 	\tikz{
-		\draw[thick, color=w] (1,0) -- (\textwidth-0.25in,0);
-		\node[anchor=west, fill = b, inner sep = 3pt, text=w] at (0,0) {\textbf{TEMPLATE}};
-		\node[anchor=east, fill = b, inner sep = 3pt, text=w] at (\textwidth,0) {\textbf{NAME}};
+		\draw[thick, color=b] (1,0) -- (\textwidth-0.25in,0);
+		\node[anchor=west, fill = w, inner sep = 3pt, text=b] at (0,0) {\textbf{FORMULAS}};
+		\node[anchor=east, fill = w, inner sep = 3pt, text=b] at (\textwidth,0) {\textbf{DAVID}};
 	}
 \end{minipage}
 
 \begin{multicols*}{4}
 	\begin{conceptbox}[v3]{Header 1}
 		\nc[v3]{Header 2}
+		\begin{equation}
+			\frac{D\rho}{Dt}=0
+		\end{equation}
 	\end{conceptbox}
 
 	\begin{conceptbox}[r3]{Header 1}
@@ -195,7 +198,7 @@
 		\nc[b3]{Header 2}
 	\end{conceptbox}
 	\columnbreak
-	\begin{conceptbox}[w]{Tikz Diagrams}
+	\begin{conceptbox}[g2]{Tikz Diagrams}
 		\tiny
 		\begin{tikzpicture}[scale=0.6, yscale=0.8]
 			\fill[color=r1, draw opacity=0.5, fill opacity=0.5, path fading=south] (0,-0.5) rectangle (1,4);
